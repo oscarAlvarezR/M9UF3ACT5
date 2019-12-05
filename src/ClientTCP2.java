@@ -23,7 +23,7 @@ public class ClientTCP2 {
 		//Lectura teclat
 		cadena = in.readLine();
 		
-		while (cadena != null) {
+		while (cadena != null && !cadena.equals("")) {
 			
 			//Enviament cadena al servidor
 			fsortida.println(cadena);

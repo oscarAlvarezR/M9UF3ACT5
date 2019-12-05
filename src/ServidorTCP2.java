@@ -1,17 +1,24 @@
 import java.net.*;
+import java.util.Scanner;
 import java.io.*;
 
 public class ServidorTCP2 {
 
 	public static void main (String[] args) throws Exception {
 
+		// **********SEGONA PART**********
+		Scanner teclado = new Scanner(System.in);
+
+
 		int numPort = 60000;
 		ServerSocket servidor = new ServerSocket(numPort);
 		String cadena = "";
-		// Declarem la variable numClients per a indicar 
+
+
+		// Demanem el numClients per a indicar 
 		// el max de clients que rebra el servidor
-		
-		int numClients = 3;
+		System.out.println("Introdueix el num de clients que podra rebre el servidor: ");
+		int numClients = teclado.nextInt();
 
 		// Determinem les vegades que es conectaran els clients
 		for (int i = 0; i < numClients; i++) {
@@ -19,7 +26,7 @@ public class ServidorTCP2 {
 			Socket clientConnectat = null;
 			PrintWriter fsortida = null;
 			BufferedReader fentrada = null;
-			
+
 			System.out.println("Esperant connexió... ");
 			clientConnectat = servidor.accept();
 			System.out.println("Client " + (i+1) + " connectat... ");
@@ -30,7 +37,7 @@ public class ServidorTCP2 {
 
 			//FLUX D'ENTRADA DEL CLIENT
 			fentrada = new BufferedReader(new InputStreamReader(clientConnectat.getInputStream()));
-		
+
 			while ((cadena = fentrada.readLine()) != null) {
 
 				fsortida.println(cadena);
@@ -46,9 +53,9 @@ public class ServidorTCP2 {
 
 		//TANCAR STREAMS I SOCKETS
 		System.out.println("Tancant connexió... ");
-//		fentrada.close();
-//		fsortida.close();
-//		clientConnectat.close();
+		//		fentrada.close();
+		//		fsortida.close();
+		//		clientConnectat.close();
 		servidor.close();
 
 	}

@@ -5,6 +5,7 @@ public class ClientTCP2 {
 	
 	public static void main (String[] args) throws Exception {
 		
+		// **********SEGONA PART**********
 		String host = "localhost";
 		int port = 60000;//Port remot
 		Socket client = new Socket(host, port);
@@ -31,17 +32,12 @@ public class ClientTCP2 {
 			eco = fentrada.readLine();
 			System.out.println("  =>ECO: "+eco);
 			//Lectura del teclat
-			cadena = in.readLine();
-			
-			
+			cadena = in.readLine();	
 		}
-		
 		fsortida.close();
 		fentrada.close();
 		System.out.println("Finalització de l'enviament...");
 		in.close();
 		client.close();
-		
 	}
-		
 }
